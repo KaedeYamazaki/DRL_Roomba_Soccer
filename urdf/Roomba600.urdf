@@ -1,0 +1,378 @@
+<robot name="roomba_sim">
+
+
+<!-- リンク -->
+  <link name="base_link"/>
+
+
+  <!-- メインボディ -->
+  <link name="body_link">
+    <!-- 外観 -->
+    <visual>
+      <geometry>
+        <cylinder radius="0.17425" length="0.072"/>
+      </geometry>
+      <origin xyz="0.03 0 0" rpy="0 0 0"/>
+      <material name="white">
+        <color rgba="1.0 1.0 1.0 1.0"/>
+      </material>
+    </visual>
+
+    <!-- 衝突判定 -->
+    <collision>
+      <geometry>
+        <cylinder radius="0.17425" length="0.077"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </collision>
+
+    <!-- 慣性モーメント関連 -->
+    <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="3.243" />
+        <inertia ixx="0.026219165" 
+            ixy="0"  ixz="0"
+            iyx="0"  iyy="0.026219165" 
+            iyz="0"
+            izx="0"  izy="0"  izz="0.049233705" />
+    </inertial>
+  </link>
+
+
+  <!-- 前方のキャスターをボールに置き換え -->
+  <link name="ball_link_front">
+    <!-- 外観 -->
+    <visual>
+      <geometry>
+        <sphere radius="0.0235"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="white">
+        <color rgba="1.0 1.0 1.0 1.0"/>
+      </material>
+    </visual>
+
+    <!-- 衝突判定 -->
+    <collision>
+      <geometry>
+        <sphere radius="0.0235"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </collision>
+
+    <!-- 慣性モーメント関連 -->
+    <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.025" />
+        <inertia ixx="0.00005184" 
+            ixy="0"  ixz="0"
+            iyx="0"  iyy="0.00005184" 
+            iyz="0"
+            izx="0"  izy="0"  izz="0.00005184" />
+    </inertial>
+  </link>
+
+
+
+  <!-- 右車輪 -->
+  <link name="wheel_link_right">
+
+    <!-- 外観 -->
+    <visual>
+      <geometry>
+        <cylinder radius="0.036" length="0.015"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="black">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+
+    <!-- 衝突判定 -->
+    <collision>
+      <geometry>
+        <cylinder radius="0.036" length="0.015"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </collision>
+
+    <!-- 慣性モーメント -->
+    <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.204" />
+        <inertia ixx="0.000069921" 
+            ixy="0"  ixz="0"
+            iyx="0"  iyy="0.000132192" 
+            iyz="0"
+            izx="0"  izy="0"  izz="0.000069921" />
+    </inertial>
+  </link>
+
+
+  <!-- 左車輪 -->
+  <link name="wheel_link_left">
+
+    <!-- 外観 -->
+    <visual>
+      <geometry>
+        <cylinder radius="0.036" length="0.015"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="black">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+
+    <!-- 衝突判定 -->
+    <collision>
+      <geometry>
+        <cylinder radius="0.036" length="0.015"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </collision>
+
+    <!-- 慣性モーメント -->
+    <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.204" />
+        <inertia ixx="0.000069921" 
+            ixy="0"  ixz="0"
+            iyx="0"  iyy="0.000132192" 
+            iyz="0"
+            izx="0"  izy="0"  izz="0.000069921" />
+    </inertial>
+  </link>
+
+
+
+
+
+
+
+
+  <!-- 右アーム -->
+  <link name="arm_link_right">
+    <!-- 外観 -->
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.047 0.02 0.018"/>
+      </geometry>
+      <material name="arm_right">
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+
+    <!-- 衝突判定 -->
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.047 0.02 0.018"/>
+      </geometry>
+    </collision>
+
+    <!-- 慣性モーメント -->
+    <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.05" />
+        <inertia ixx="0.000003016" 
+            ixy="0"  ixz="0"
+            iyx="0"  iyy="0.000010554" 
+            iyz="0"
+            izx="0"  izy="0"  izz="0.00001087" />
+    </inertial>
+  </link>
+
+  <!-- 左アーム -->
+  <link name="arm_link_left">
+    <!-- 外観 -->
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.047 0.02 0.018"/>
+      </geometry>
+      <material name="arm_left">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+
+    <!-- 衝突判定 -->
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.047 0.02 0.018"/>
+      </geometry>
+    </collision>
+
+    <!-- 慣性モーメント -->
+    <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.05" />
+        <inertia ixx="0.000003016" 
+            ixy="0"  ixz="0"
+            iyx="0"  iyy="0.000010554" 
+            iyz="0"
+            izx="0"  izy="0"  izz="0.00001087" />
+    </inertial>
+  </link>
+
+
+
+
+
+
+
+  <!--カメラリンク-->
+  <link name="camera_link">
+
+    <!-- 外観 -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.024 0.0872 0.024"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+
+    <!-- 衝突判定 -->
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.024 0.0872 0.024"/>
+      </geometry>
+    </collision>
+
+    <!-- 慣性モーメント -->
+    <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.0001" />
+        <inertia ixx="0.000063393" 
+            ixy="0"  ixz="0"
+            iyx="0"  iyy="0.000008928" 
+            iyz="0"
+            izx="0"  izy="0"  izz="0.000063393" />
+    </inertial>
+  </link>
+
+
+  <!--カメラの注視点用の仮想的なリンク-->
+  <link name="target_position_vertual_link">
+    <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.0001" />
+        <inertia ixx="0.000034533333" 
+            ixy="0"  ixz="0"
+            iyx="0"  iyy="0.000034533333" 
+            iyz="0"
+            izx="0"  izy="0"  izz="0.0000648" />
+    </inertial>
+  </link>
+
+  <!-- カメラ台 -->
+  <link name="camera_stand_link">
+
+    <!-- 外観 -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.2"/>
+      </geometry>
+      <material name="stand_color">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+
+    <!-- 衝突判定 -->
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.2"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.0001" />
+        <inertia ixx="0.000034533333" 
+            ixy="0"  ixz="0"
+            iyx="0"  iyy="0.000034533333" 
+            iyz="0"
+            izx="0"  izy="0"  izz="0.0000648" />
+    </inertial>
+  </link>
+
+
+
+
+
+
+
+<!-- ジョイント -->
+  <joint name="body_joint" type="fixed">
+    <parent link="base_link"/>
+    <child  link="body_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="ball_joint_front" type="fixed">
+    <parent link="body_link"/>
+    <child  link="ball_link_front"/>
+    <origin xyz="0.13 0 -0.022" rpy="0 0 0" />
+  </joint>
+
+  <joint name="wheel_joint_right" type="continuous">
+    <parent link="body_link"/>
+    <child  link="wheel_link_right"/>
+    <origin xyz="0 -0.1175 -0.009" rpy="1.570796326794897 0 0" />
+    <axis xyz="0 0 -1" />
+    <limit effort="10" velocity="10" />
+    <joint_properties damping="0.0" friction="0.0" />
+  </joint>
+
+  <joint name="wheel_joint_left" type="continuous">
+    <parent link="body_link"/>
+    <child  link="wheel_link_left"/>
+    <origin xyz="0 0.1175 -0.009" rpy="1.570796326794897 0 0" />
+    <axis xyz="0 0 -1" />
+    <limit effort="10" velocity="10" />
+    <joint_properties damping="0.0" friction="0.0" />
+  </joint>
+
+  <joint name="left_arm_joint" type="fixed">
+    <parent link="body_link"/>
+    <child link="arm_link_left"/>
+    <origin xyz="0.17379 0.09436 0.031" rpy="0 0 0.4974188"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="right_arm_joint" type="fixed">
+    <parent link="body_link"/>
+    <child link="arm_link_right"/>
+    <origin xyz="0.17379 -0.09436 0.031" rpy="0 0 -0.4974188"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="camera_joint" type="fixed">
+      <parent link="body_link"/>
+      <child link="camera_stand_link"/>
+      <origin xyz="-0.1 0 0.1385" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="stand_joint" type="fixed">
+    <parent link="camera_stand_link"/>
+    <child link="camera_link"/>
+    <origin xyz="0 0 0.112" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="camera_target_joint" type="fixed">
+    <parent link="camera_link"/>
+    <child link="target_position_vertual_link"/>
+    <origin xyz="0.1 0.0 -0.1" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+</robot>

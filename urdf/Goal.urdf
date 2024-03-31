@@ -1,0 +1,146 @@
+<?xml version="1.0" ?>
+<robot name="goal">
+  <link name="base_link"/>
+  <link name="board1">
+    <visual>
+      <geometry>
+        <box size="0.43 0.8 0.01"/>
+      </geometry>
+      <material name="board_color1">
+        <color rgba="1 1 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.43 0.8 0.01"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+  </link>
+  
+  <link name="board2">
+    <visual>
+      <geometry>
+        <box size="0.43 0.01 0.4"/>
+      </geometry>
+      <material name="board_color2">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.43 0.01 0.4"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+  </link>
+  
+  <link name="board3">
+    <visual>
+      <geometry>
+        <box size="0.43 0.01 0.4"/>
+      </geometry>
+      <material name="board_color3">
+        <color rgba="0 1 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.43 0.01 0.4"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+  </link>
+  
+  <link name="board4">
+    <visual>
+      <geometry>
+        <box size="0.01 0.8 0.4"/>
+      </geometry>
+      <material name="board_color4">
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.01 0.8 0.4"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+  </link>
+
+  <link name="goal_judge">
+    <visual>
+      <geometry>
+        <box size="0.01 0.78 0.2"/>
+      </geometry>
+      <material name="goal_judge_color">
+        <color rgba="1 1 1 0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.03 0.78 0.2"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+  </link>
+  
+  <!-- Joint definitions go here -->
+  <joint name="joint0" type="fixed">
+    <parent link="base_link"/>
+    <child link="board1"/>
+    <origin xyz="0 0 0.4"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="joint1" type="fixed">
+    <parent link="board1"/>
+    <child link="board2"/>
+    <origin xyz="0 0.4 -0.2"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+  
+  <joint name="joint2" type="fixed">
+    <parent link="board1"/>
+    <child link="board3"/>
+    <origin xyz="0 -0.4 -0.2"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+  
+  <joint name="joint3" type="fixed">
+    <parent link="board1"/>
+    <child link="board4"/>
+    <origin xyz="-0.215 0 -0.2"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="joint4" type="fixed">
+    <parent link="board1"/>
+    <child link="goal_judge"/>
+    <origin xyz="0.15 0 -0.3"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  
+</robot>
